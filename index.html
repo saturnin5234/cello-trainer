@@ -3,13 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Redirect to the latest version of the app -->
+<meta http-equiv="refresh" content="0; url=./cello-trainer.html">
 <title>Cello Trainer</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
     background: #0e0e12;
     color: #e8e4dc;
-    font-family: 'DM Mono', monospace, monospace;
+    font-family: monospace;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -26,43 +28,14 @@
   }
   @keyframes spin { to { transform: rotate(360deg); } }
   p { font-size: 0.75rem; letter-spacing: 0.15em; color: #6b6b80; text-transform: uppercase; }
-  .error { color: #c86e6e; font-size: 0.7rem; letter-spacing: 0.1em; text-align: center; max-width: 300px; line-height: 1.6; }
   a { color: #c8a96e; }
 </style>
 </head>
 <body>
-<div class="spinner" id="spinner"></div>
-<p id="msg">Loading latest version…</p>
-
-<script>
-  const USER = 'saturnin5234';
-  const REPO = 'cello-trainer';
-  const FILE = 'cello-trainer.html';
-
-  // Fetch the raw file content from GitHub and inject it into the page
-  const url = `https://raw.githubusercontent.com/${USER}/${REPO}/main/${FILE}?nocache=${Date.now()}`;
-
-  fetch(url)
-    .then(res => {
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      return res.text();
-    })
-    .then(html => {
-      // Replace the entire page with the fetched content
-      document.open();
-      document.write(html);
-      document.close();
-    })
-    .catch(err => {
-      document.getElementById('spinner').style.display = 'none';
-      document.getElementById('msg').style.display = 'none';
-      document.body.innerHTML += `
-        <p class="error">
-          Could not load the latest version.<br><br>
-          Check your internet connection, or open the app directly:<br><br>
-          <a href="https://saturnin5234.github.io/cello-trainer/${FILE}">${FILE}</a>
-        </p>`;
-    });
-</script>
+<div class="spinner"></div>
+<p>Loading…</p>
+<p style="margin-top:8px; font-size:0.65rem;">
+  Not redirecting? <a href="./cello-trainer.html">Click here</a>
+</p>
 </body>
 </html>
